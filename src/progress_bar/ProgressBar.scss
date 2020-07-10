@@ -1,0 +1,47 @@
+$green: rgb(0, 193, 166);
+
+.progressBar {
+  button {
+    height: 40px;
+    width: 160px;
+    border-radius: 20px;
+    border: 1px solid $green;
+    color: $green;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+
+  button:first-of-type {
+    margin-left: 0px;
+  }
+
+  button:hover {
+    border-width: 2px;
+  }
+
+  button:active {
+    border-width: 3px;
+  }
+
+  button:disabled {
+    color: lightgray;
+    border-color: lightgray;
+  }
+
+  button.finish-request {
+    border-color: tomato;
+    color: tomato;
+  }
+
+  .bar {
+    height: 6px;
+    background-color: tomato;
+    transition: width 0.2s;
+    margin: 6px 0px;
+    background: linear-gradient(90deg, rgba(224,158,10,1) 0%, rgba(255,0,0,1) 100%);
+  }
+
+  .finished {
+    opacity: 0;
+  }
+}
