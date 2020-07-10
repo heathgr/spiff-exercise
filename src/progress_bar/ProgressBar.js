@@ -30,7 +30,7 @@ const Solution = () => {
 
   return (
     <div className="progressBar">
-      <div>{`${Math.round(percentageComplete) * 100}%`}</div>
+      <div>{`${Math.round(percentageComplete * 100)}%`}</div>
       <div className="bar" style={{ width: `${100 * percentageComplete}%` }}></div>
       {
         status === Status.IDLE && <button onClick={() => service.start()}>Start Request</button>
