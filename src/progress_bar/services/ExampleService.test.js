@@ -61,6 +61,13 @@ describe('Example Service', () => {
     subject.stop()
 
     expect(subject.getStatus()).toEqual({
+      status: Status.COMPLETING,
+      percentageComplete: 0,
+    })
+
+    jest.runOnlyPendingTimers()
+
+    expect(subject.getStatus()).toEqual({
       status: Status.IDLE,
       percentageComplete: 1,
     })
@@ -75,7 +82,7 @@ describe('Example Service', () => {
     subject.start()
 
     expect(testListener).toHaveBeenLastCalledWith({
-      status: Status.IDLE,
+      status: Status.WORKING,
       percentageComplete: 0,
     })
   })

@@ -1,6 +1,7 @@
 export const Status = {
   IDLE: 'IDLE',
   WORKING: 'WORKING',
+  COMPLETING: 'COMPLETING'
 }
 
 export const PERCENTAGE_STEP = 0.1
@@ -47,15 +48,26 @@ class ExampleService {
   }
 
   start = () => {
-    this.updateStatus(intialStatus)
+    this.updateStatus({
+      status: Status.WORKING,
+      percentageComplete: 0,
+    })
     this.handleTimeout()
   }
 
   stop = () => {
+    clearTimeout(this.timerId)
+
     this.updateStatus({
-      status: Status.IDLE,
-      percentageComplete: 1,
+      status: Status.COMPLETING,
     })
+
+    this.timerId = setTimeout(() => {
+      this.updateStatus({
+        status: Status.IDLE,
+        percentageComplete: 1,
+      })
+    }, 1000)
   }
 
   subscribe = (listener) => {
